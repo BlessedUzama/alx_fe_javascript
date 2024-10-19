@@ -16,9 +16,13 @@ function showRandomQuote() {
 
 
 function createAddQuoteForm() {
-    const quoteText = document.getElementById('newQuoteText').value;
-    const quoteCategory = document.getElementById('newQuoteCategory').value;
+    const quoteText = document.getElementById('newQuoteText').value.trim();
+    const quoteCategory = document.getElementById('newQuoteCategory').value.trim();
     
+    if (quoteText === '' || quoteCategory === '') {
+        alert('Please enter both a quote and a category!');
+        return;
+    }
 
     const newObj = {
         text: quoteText,
@@ -28,6 +32,21 @@ function createAddQuoteForm() {
 
     document.getElementById('newQuoteText').value = '';
     document.getElementById('newQuoteCategory').value = '';
+
+    const quoteDisplay = document.getElementById('quoteDisplay');
+
+    const newQuoteElement = document.createElement('div');
+    const newQuoteText = document.createElement('p');
+    const newQuoteCategory = document.createElement('small');
+
+    newQuoteText.textContent = quoteText;
+    newQuoteCategory.textContent = `Category: ${quoteCategory}`;
+
+    newQuoteElement.appendChild(newQuoteText);
+    newQuoteElement.appendChild(newQuoteCategory);
+
+    quoteDisplay.appendChild(newQuoteElement);
+
     alert('New quote added successfully!');
 }
 
