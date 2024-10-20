@@ -129,7 +129,7 @@ async function syncQuotes() {
 
         if (JSON.stringify(serverData) !== JSON.stringify(quotes)) {
             conflictMessage.textContent = 'Conflict detected! Server data takes precedence.';
-            setTimeout(() => (conflictMessage.textContent = ''), 5000);
+            setInterval(() => (conflictMessage.textContent = ''), 5000);
             quotes = serverData;
             localStorage.setItem('quotes', JSON.stringify(quotes));
             populateCategories();
@@ -139,3 +139,4 @@ async function syncQuotes() {
         console.error('Error fetching data from server:', error)
     }
 }
+
