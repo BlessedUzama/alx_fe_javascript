@@ -103,7 +103,7 @@ function importFromJsonFile(event) {
     fileReader.readAsText(event.target.files[0]);
 }
 
-async function syncWithServer(newQuote) {
+async function fetchQuotesFromServer(newQuote) {
     try {
         await fetch("https://jsonplaceholder.typicode.com/posts", {
             method: 'POST',
