@@ -117,7 +117,7 @@ async function fetchQuotesFromServer(newQuote) {
     }
 }
 
-async function syncQuotes() {
+async function setInterva() {
     try {
         const response = await fetch("https://jsonplaceholder.typicode.com/posts");
         const serverQuotes = await response.json();
